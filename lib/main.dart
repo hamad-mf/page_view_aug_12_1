@@ -9,19 +9,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var ColorList = [
+      Colors.red,
+      Colors.green,
+      Colors.blue,
+      Colors.yellow,
+      Colors.black,
+      Colors.orange,
+      Colors.pink,
+    ];
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-          body: SafeArea(
-              child: PageView(
-        children: [
-          Container(
-            color: Colors.red,
+        body: SafeArea(
+          child: PageView.builder(
+            itemCount: ColorList.length,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) => Container(
+              color: ColorList[index],
+              child: Center(child: Text(index.toString())),
+            ),
           ),
-          Container(
-            color: Colors.yellow,
-          )
-        ],
-      ))),
+        ),
+      ),
     );
   }
 }
